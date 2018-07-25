@@ -17,4 +17,8 @@ class Negoatiation {
   get value() {
     return this._value;
   }
+
+  get amount() {
+    return this._quantity * this._value;
+  }
 }
