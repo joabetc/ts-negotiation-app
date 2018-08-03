@@ -1,5 +1,9 @@
 class Negotiation {
 
+  _date;
+  _quantity;
+  _value;
+
   constructor(date, quantity, value) {
     this._date = date;
     this._quantity = quantity;
