@@ -1,0 +1,19 @@
+{
+  "name": "ts-negotiation-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joabetc/ts-negotiation-app.git"
+  },
+  "author": "joabetc <joabetc@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joabetc/ts-negotiation-app/issues"
+  },
+  "homepage": "https://github.com/joabetc/ts-negotiation-app#readme"
+}
