@@ -1,4 +1,4 @@
-class Negoatiation {
+class Negotiation {
 
   constructor(date, quantity, value) {
     this._date = date;
