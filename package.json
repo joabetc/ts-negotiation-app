@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joabetc/ts-negotiation-app/issues"
   },
-  "homepage": "https://github.com/joabetc/ts-negotiation-app#readme"
+  "homepage": "https://github.com/joabetc/ts-negotiation-app#readme",
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  }
 }
