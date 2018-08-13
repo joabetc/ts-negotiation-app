@@ -1,13 +1,13 @@
 class NegotiationController {
   
-  private _inputDate: Element;
-  private _inputQuantity: Element;
-  private _inputValue: Element;
+  private _inputDate: HTMLInputElement;
+  private _inputQuantity: HTMLInputElement;
+  private _inputValue: HTMLInputElement;
 
   constructor() {
-    this._inputDate = document.querySelector('#data');
-    this._inputQuantity = document.querySelector('#quantidade');
-    this._inputValue = document.querySelector('#value');
+    this._inputDate = <HTMLInputElement> document.querySelector('#data');
+    this._inputQuantity = <HTMLInputElement> document.querySelector('#quantidade');
+    this._inputValue = <HTMLInputElement> document.querySelector('#value');
   }
 
   add(event: Event) {
