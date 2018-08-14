@@ -1,5 +1,11 @@
 class NegotiationsView {
 
+  private _element:  Element;
+  
+  constructor(selector: string) {
+    this._element = document.querySelector(selector);
+  }
+
   template(): string {
     return `
       <table class="table table-hover table-bordered">
