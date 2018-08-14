@@ -1,12 +1,12 @@
 class Negotiations {
 
-  private _negotiations: Array<Negotiation> = [];
+  private _negotiations: Negotiation[] = [];
 
   add(negotiation: Negotiation) {
     this._negotiations.push(negotiation);
   }
 
-  toArray() {
+  toArray(): Negotiation[] {
     return this._negotiations;
   }
 }
