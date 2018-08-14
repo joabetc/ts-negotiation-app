@@ -18,6 +18,15 @@ class NegotiationController {
     const negotiation = new Negotiation(
       new Date(this._inputDate.value.replace(/-/g, ',')), 
       parseInt(this._inputQuantity.value), 
-      parseFloat(this._inputValue.value))
+      parseFloat(this._inputValue.value)
+    );
+
+    this._negotiations.add(negotiation);
+    this._negotiations.toArray().forEach(negotiation => {
+      console.log(negotiation.date);
+      console.log(negotiation.quantity);
+      console.log(negotiation.value);
+      console.log(negotiation.amount);
+    })
   }
 }
