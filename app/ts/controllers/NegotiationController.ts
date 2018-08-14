@@ -10,6 +10,7 @@ class NegotiationController {
     this._inputDate = <HTMLInputElement> document.querySelector('#data');
     this._inputQuantity = <HTMLInputElement> document.querySelector('#quantidade');
     this._inputValue = <HTMLInputElement> document.querySelector('#value');
+    this._negotiationsView.update();
   }
 
   add(event: Event) {
