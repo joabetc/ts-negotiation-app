@@ -22,6 +22,9 @@ class NegotiationController {
     );
 
     this._negotiations.add(negotiation);
+
+    this._negotiations.toArray().length = 0;
+
     this._negotiations.toArray().forEach(negotiation => {
       console.log(negotiation.date);
       console.log(negotiation.quantity);

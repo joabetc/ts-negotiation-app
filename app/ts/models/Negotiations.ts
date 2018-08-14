@@ -7,6 +7,6 @@ class Negotiations {
   }
 
   toArray(): Negotiation[] {
-    return this._negotiations;
+    return [].concat(this._negotiations);
   }
 }
