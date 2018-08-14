@@ -26,7 +26,6 @@ class NegotiationController {
       console.log(negotiation.date);
       console.log(negotiation.quantity);
       console.log(negotiation.value);
-      console.log(negotiation.amount);
-    })
+    });
   }
 }
