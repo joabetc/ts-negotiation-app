@@ -3,6 +3,7 @@ class NegotiationController {
   private _inputDate: HTMLInputElement;
   private _inputQuantity: HTMLInputElement;
   private _inputValue: HTMLInputElement;
+  private _negotiations: Negotiations = new Negotiations();
 
   constructor() {
     this._inputDate = <HTMLInputElement> document.querySelector('#data');
