@@ -1,3 +1,5 @@
+import { NegotiationController } from './controllers/NegotiationController';
+
 const controller = new NegotiationController();
 
 // Using jQuery

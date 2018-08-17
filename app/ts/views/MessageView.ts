@@ -1,3 +1,5 @@
+import { View } from './View';
+
 class MessageView extends View<String> {
 
   template(model: string): string {
