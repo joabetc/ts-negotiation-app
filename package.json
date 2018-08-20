@@ -21,6 +21,7 @@
   "homepage": "https://github.com/joabetc/ts-negotiation-app#readme",
   "devDependencies": {
     "@types/jquery": "^2.0.42",
+    "concurrently": "^3.4.0",
     "lite-server": "^2.3.0",
     "typescript": "^2.3.2"
   }
