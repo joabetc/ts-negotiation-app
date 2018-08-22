@@ -9,10 +9,17 @@ export abstract class View<T> {
   }
 
   update(model: T): void {
+
+    const t1 = performance.now();
+
     let template = this.template(model);
     if (this._escape)
       template = template.replace(/<script>[\s\S]*?<\/script>/g, '');
     this._element.html(template);
+
+    const t2 = performance.now();
+
+    console.log(`The execution time for updating the View is ${t2 - t1}`);
   }
 
   abstract template(model: T): string;

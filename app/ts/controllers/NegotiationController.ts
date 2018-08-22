@@ -19,6 +19,8 @@ export class NegotiationController {
 
   add(event: Event) {
 
+    const t1 = performance.now();
+
     event.preventDefault();
 
     let date = new Date(this._inputDate.val().replace(/-/g, ','));
@@ -39,6 +41,10 @@ export class NegotiationController {
     this._negotiationsView.update(this._negotiations);
 
     this._messageView.update('Negotiations added successfully!');
+
+    const t2 = performance.now();
+
+    console.log(`The execution time for adding a new Negotiation is ${t2 - t1}`);
   }
 
   private _isWorkDay(date: Date) {
