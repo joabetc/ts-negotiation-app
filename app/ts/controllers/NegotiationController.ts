@@ -20,9 +20,16 @@ export class NegotiationController {
   add(event: Event) {
 
     event.preventDefault();
+
+    let date = new Date(this._inputDate.val().replace(/-/g, ','));
+
+    if (date.getDay() == 0 || date.getDay() == 6) {
+      this._messageView.update("Thia is not a valid work day!");
+      return;
+    }
     
     const negotiation = new Negotiation(
-      new Date(this._inputDate.val().replace(/-/g, ',')), 
+      date, 
       parseInt(this._inputQuantity.val()), 
       parseFloat(this._inputValue.val())
     );
