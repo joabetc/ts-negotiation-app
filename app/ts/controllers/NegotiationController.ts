@@ -1,5 +1,6 @@
 import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation } from '../models/index';
+import { LogExecutionTime } from '../helpers/decorators/index';
 
 export class NegotiationController {
   
@@ -17,9 +18,8 @@ export class NegotiationController {
     this._negotiationsView.update(this._negotiations);
   }
 
+  @LogExecutionTime()
   add(event: Event) {
-
-    const t1 = performance.now();
 
     event.preventDefault();
 
@@ -41,10 +41,6 @@ export class NegotiationController {
     this._negotiationsView.update(this._negotiations);
 
     this._messageView.update('Negotiations added successfully!');
-
-    const t2 = performance.now();
-
-    console.log(`The execution time for adding a new Negotiation is ${t2 - t1}`);
   }
 
   private _isWorkDay(date: Date) {
