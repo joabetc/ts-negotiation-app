@@ -23,7 +23,7 @@ export class NegotiationController {
 
     let date = new Date(this._inputDate.val().replace(/-/g, ','));
 
-    if (date.getDay() == 0 || date.getDay() == 6) {
+    if (date.getDay() == WeekDay.Sunday || date.getDay() == WeekDay.Saturday) {
       this._messageView.update("Thia is not a valid work day!");
       return;
     }
@@ -40,4 +40,14 @@ export class NegotiationController {
 
     this._messageView.update('Negotiations added successfully!');
   }
+}
+
+enum WeekDay {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday
 }
