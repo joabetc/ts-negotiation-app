@@ -18,7 +18,7 @@ export class NegotiationController {
     this._negotiationsView.update(this._negotiations);
   }
 
-  @LogExecutionTime()
+  @LogExecutionTime(true)
   add(event: Event) {
 
     event.preventDefault();
