@@ -1,7 +1,8 @@
 import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation } from '../models/index';
-import { DOMInject } from '../helpers/decorators/index';
+import { DOMInject, LogClassInstance } from '../helpers/decorators/index';
 
+@LogClassInstance()
 export class NegotiationController {
   
   @DOMInject('#date')
