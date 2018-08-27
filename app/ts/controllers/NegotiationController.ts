@@ -1,8 +1,6 @@
 import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation, PartialNegotiation } from '../models/index';
-import { DOMInject, LogClassInstance } from '../helpers/decorators/index';
-
-let timer = 0;
+import { DOMInject, LogClassInstance, Throttle } from '../helpers/decorators/index';
 
 @LogClassInstance()
 export class NegotiationController {
@@ -24,9 +22,8 @@ export class NegotiationController {
     this._negotiationsView.update(this._negotiations);
   }
 
-  add(event: Event) {
-
-    event.preventDefault();
+  @Throttle()
+  add() {
 
     let date = new Date(this._inputDate.val().replace(/-/g, ','));
 
@@ -52,6 +49,7 @@ export class NegotiationController {
     return date.getDay() != WeekDay.Saturday && date.getDay() != WeekDay.Sunday;
   }
 
+  @Throttle()
   importData() {
     
     function isOk(res: Response) {
@@ -62,20 +60,16 @@ export class NegotiationController {
       }
     }
 
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      fetch('http://localhost:8080/dados')
-        .then(res => isOk(res))
-        .then(res => res.json())
-        .then((data: PartialNegotiation[]) => {
-          data
-            .map(dat => new Negotiation(new Date(), dat.vezes, dat.montante))
-            .forEach(negotiation => this._negotiations.add(negotiation));
-          this._negotiationsView.update(this._negotiations);
-        })
-        .catch(err => console.log(err));
-    })
-
+    fetch('http://localhost:8080/dados')
+      .then(res => isOk(res))
+      .then(res => res.json())
+      .then((data: PartialNegotiation[]) => {
+        data
+          .map(dat => new Negotiation(new Date(), dat.vezes, dat.montante))
+          .forEach(negotiation => this._negotiations.add(negotiation));
+        this._negotiationsView.update(this._negotiations);
+      })
+      .catch(err => console.log(err));
   }
 }
 
