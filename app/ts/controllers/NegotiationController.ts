@@ -2,6 +2,8 @@ import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation, PartialNegotiation } from '../models/index';
 import { DOMInject, LogClassInstance } from '../helpers/decorators/index';
 
+let timer = 0;
+
 @LogClassInstance()
 export class NegotiationController {
   
@@ -60,16 +62,20 @@ export class NegotiationController {
       }
     }
 
-    fetch('http://localhost:8080/dados')
-      .then(res => isOk(res))
-      .then(res => res.json())
-      .then((data: PartialNegotiation[]) => {
-        data
-          .map(dat => new Negotiation(new Date(), dat.vezes, dat.montante))
-          .forEach(negotiation => this._negotiations.add(negotiation));
-        this._negotiationsView.update(this._negotiations);
-      })
-      .catch(err => console.log(err));
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fetch('http://localhost:8080/dados')
+        .then(res => isOk(res))
+        .then(res => res.json())
+        .then((data: PartialNegotiation[]) => {
+          data
+            .map(dat => new Negotiation(new Date(), dat.vezes, dat.montante))
+            .forEach(negotiation => this._negotiations.add(negotiation));
+          this._negotiationsView.update(this._negotiations);
+        })
+        .catch(err => console.log(err));
+    })
+
   }
 }
 
