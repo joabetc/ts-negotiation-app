@@ -1,7 +1,7 @@
 import { NegotiationsView, MessageView } from '../views/index';
-import { Negotiations, Negotiation, PartialNegotiation } from '../models/index';
+import { Negotiations, Negotiation } from '../models/index';
 import { DOMInject, LogClassInstance, Throttle } from '../helpers/decorators/index';
-import { NegotiationService, HandlerFunction } from '../services/index';
+import { NegotiationService } from '../services/index';
 
 @LogClassInstance()
 export class NegotiationController {
@@ -55,16 +55,14 @@ export class NegotiationController {
   @Throttle()
   importData() {
     
-    const isOk: HandlerFunction = (res: Response) => {
-      if (res.ok) {
-        return res;
-      } else {
-        throw new Error(res.statusText);
-      }
-    }
-
     this._service
-      .getNegotiations(isOk)
+    .getNegotiations(res => {
+        if (res.ok) {
+          return res;
+        } else {
+          throw new Error(res.statusText);
+        }
+      })
       .then(negotiations => 
         negotiations.forEach(negotiation => 
           this._negotiations.add(negotiation)));;
