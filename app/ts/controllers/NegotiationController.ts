@@ -1,7 +1,7 @@
 import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation, PartialNegotiation } from '../models/index';
 import { DOMInject, LogClassInstance, Throttle } from '../helpers/decorators/index';
-import { NegotiationService } from '../services/index';
+import { NegotiationService, HandlerFunction } from '../services/index';
 
 @LogClassInstance()
 export class NegotiationController {
@@ -55,7 +55,7 @@ export class NegotiationController {
   @Throttle()
   importData() {
     
-    function isOk(res: Response) {
+    const isOk: HandlerFunction = (res: Response) => {
       if (res.ok) {
         return res;
       } else {

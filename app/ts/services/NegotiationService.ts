@@ -2,7 +2,7 @@ import { Negotiation, PartialNegotiation } from '../models/index';
 
 export class NegotiationService {
   
-  getNegotiations(handler: Function): Promise<Negotiation[]> {
+  getNegotiations(handler: HandlerFunction): Promise<Negotiation[]> {
     return fetch('http://localhost:8080/dados')
       .then(res => handler(res))
       .then(res => res.json())
@@ -12,4 +12,8 @@ export class NegotiationService {
         )
       .catch(err => console.log(err));
   }
+}
+
+export interface HandlerFunction  {
+  (res: Response): Response
 }
