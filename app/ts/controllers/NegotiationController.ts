@@ -42,11 +42,11 @@ export class NegotiationController {
       parseFloat(this._inputValue.val())
     );
 
-    print(negotiation);
-
     this._negotiations.add(negotiation);
-
+    
     this._negotiationsView.update(this._negotiations);
+
+    print(negotiation, this._negotiations);
 
     this._messageView.update('Negotiations added successfully!');
   }
