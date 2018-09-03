@@ -2,6 +2,7 @@ import { NegotiationsView, MessageView } from '../views/index';
 import { Negotiations, Negotiation } from '../models/index';
 import { DOMInject, LogClassInstance, Throttle } from '../helpers/decorators/index';
 import { NegotiationService } from '../services/index';
+import { print } from '../helpers/index';
 
 @LogClassInstance()
 export class NegotiationController {
@@ -41,11 +42,9 @@ export class NegotiationController {
       parseFloat(this._inputValue.val())
     );
 
-    negotiation.toString();
+    print(negotiation);
 
     this._negotiations.add(negotiation);
-
-    this._negotiations.toString();
 
     this._negotiationsView.update(this._negotiations);
 
