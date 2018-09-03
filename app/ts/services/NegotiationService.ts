@@ -10,7 +10,10 @@ export class NegotiationService {
         data
           .map(dat => new Negotiation(new Date(), dat.vezes, dat.montante))
         )
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        throw new Error('It was not possible to import the negotiations');
+      });
   }
 }
 
