@@ -1,7 +1,6 @@
-import { Printable } from "./Printable";
-import { Comparable } from "./Comparable";
+import { Common } from "./Common";
 
-export class Negotiation implements Printable, Comparable<Negotiation> {
+export class Negotiation implements Common<Negotiation> {
 
   constructor(
     readonly date: Date, 
