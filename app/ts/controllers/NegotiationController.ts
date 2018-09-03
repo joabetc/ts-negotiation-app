@@ -79,9 +79,7 @@ export class NegotiationController {
         
         this._negotiationsView.update(this._negotiations);
       })
-      .catch(err => {
-        this._messageView.update(err.message);
-      });
+      .catch(err => this._messageView.update(err.message));
   }
 }
 
