@@ -41,7 +41,11 @@ export class NegotiationController {
       parseFloat(this._inputValue.val())
     );
 
+    negotiation.toString();
+
     this._negotiations.add(negotiation);
+
+    this._negotiations.toString();
 
     this._negotiationsView.update(this._negotiations);
 
