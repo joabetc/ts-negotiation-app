@@ -66,9 +66,19 @@ export class NegotiationController {
           throw new Error(res.statusText);
         }
       })
-      .then(negotiations => 
-        negotiations.forEach(negotiation => 
-          this._negotiations.add(negotiation)));;
+      .then(negotiationsToImport => {
+
+        const importedNegotiations = this._negotiations.toArray();
+        
+        negotiationsToImport
+          .filter(negotiation => 
+            !importedNegotiations.some(imported => 
+              negotiation.equals(imported)))
+          .forEach(negotiation => 
+            this._negotiations.add(negotiation));
+        
+        this._negotiationsView.update(this._negotiations);
+      });
   }
 }
 
